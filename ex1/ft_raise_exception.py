@@ -1,7 +1,8 @@
-def input_temperature(temp : str) -> int:
+def input_temperature(temp: str) -> int:
     return int(temp)
 
-def test_temperature() -> int | None:
+
+def test_temperature() -> None:
     print("=== Garden Temperature ===")
 
     data = "25"
@@ -9,7 +10,6 @@ def test_temperature() -> int | None:
     try:
         temp = input_temperature(data)
         print(f"Temperature is now {temp}°C")
-        return temp
     except Exception as e:
         print(f"Caught input_temperature error: {e}")
 
@@ -18,35 +18,40 @@ def test_temperature() -> int | None:
     try:
         temp = input_temperature(data)
         print(f"Temperature is now {temp}°C")
-        return temp
-    except Exception as error:
-        print(f"Caught input_temperature error: {error}")
-    
-#     try:
-#     if value > 100:
-#         raise ValueError(f"Invalid Value: {value} is out of bounds.")
-# except ValueError as error:
-#     print(f"Caught an error! Details: {error}")
+    except Exception as e:
+        print(f"Caught input_temperature error: {e}")
+
     data = "100"
-    max = 40
-    
+    max_temp = 40
+    print(f"Input data is '{data}'")
     try:
         temp = input_temperature(data)
-        if temp < max:
-              print(f"Temperature is now {temp}°C")
-    except:
-        print(f"Caught input_temperature error: {data}°C is too hot for plants (max {max}°C)")
-    
+        if temp > max_temp:
+            print(
+                f"Caught input_temperature error: {temp}°C is too hot "
+                "for plants (max {max_temp}°C)")
+        else:
+            print(f"Temperature is now {temp}°C")
+    except Exception as e:
+        print(f"Caught input_temperature error: {e}")
+
+    # Caso demasiado frío
     data = "-50"
-    min = 0
+    min_temp = 0
+    print(f"Input data is '{data}'")
     try:
         temp = input_temperature(data)
-        if temp < min:
-              print(f"Temperature is now {temp}°C")
-    except:
-        print(f"Caught input_temperature error: {data}°C is too hot for plants (max {max}°C)")
+        if temp < min_temp:
+            print(
+                f"Caught input_temperature error: {temp}°C is too cold "
+                "for plants (min {min_temp}°C)")
+        else:
+            print(f"Temperature is now {temp}°C")
+    except Exception as e:
+        print(f"Caught input_temperature error: {e}")
 
     print("All tests completed - program didn't crash!")
 
-    if __name__ == "__name":
-        test_temperature()
+
+if __name__ == "__main__":
+    test_temperature()
