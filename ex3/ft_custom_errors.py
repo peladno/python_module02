@@ -1,8 +1,10 @@
-class GardenError(Exception):
-    default_message = "Unknown garden error"
+DEFAULT_MSG = "Unknown garden error"
 
-    def __init__(self, message: str | None = None) -> None:
-        self.message = message or self.default_message
+
+class GardenError(Exception):
+
+    def __init__(self, message: str = DEFAULT_MSG) -> None:
+        self.message = message
         super().__init__(self.message)
 
 
@@ -48,5 +50,6 @@ def demo_catch_all() -> None:
 if __name__ == "__main__":
     print("=== Custom Garden Errors Demo ===")
     demo_specific_catches()
+    print()
     demo_catch_all()
     print("All custom error types work correctly!")
